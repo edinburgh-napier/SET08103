@@ -584,16 +584,14 @@ We also have to change the declarations managing our connection to be `static`:
 These need to be `static` as we will no longer create an `App` object.  Next we update `main` to initialise the Spring application:
 
 ```java
-    public static void main(String[] args)
-    {
-        // Connect to database
-        if (args.length < 1)
-        {
-            connect("localhost:33060");
-        }
-        else
-        {
-            connect(args[0]);
+    public static void main(String[] args) {
+        // Create new Application and connect to database
+        App app = new App();
+
+        if (args.length < 1) {
+            connect("localhost:33060", 0);
+        } else {
+            connect(args[0], Integer.parseInt(args[1]));
         }
 
         SpringApplication.run(App.class, args);
