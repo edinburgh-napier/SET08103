@@ -538,20 +538,19 @@ It might be useful to start up a database container to connect to now.  This is 
 
 #### Updating `App`
 
-First, we need to modify the declaration of `App` to include the necessary imports and to state that the application is a Spring one.  Modify the start of `App.java` to the following:
+First, we need to modify the declaration of `App` to include the necessary imports and to state that the application is a Spring one. Add the followind imports at  the start of `App.java`:
 
 ```java
-package com.napier.sem;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+```
 
-import java.sql.*;
-import java.util.ArrayList;
+Add the following annotations above `public class App`:
 
+```java
 @SpringBootApplication
 @RestController
 public class App
