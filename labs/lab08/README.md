@@ -255,10 +255,17 @@ The complete Maven file is shown below for reference.
 </project>
 ```
 
-Once happy with your changes merge them into master and push your changes to GitHub. Once GitHub Actions is complete if you look up your Releases you will see the new release there.  Note that `seMethods.jar` has been added.
+Before we merge our changes into master, we need to grant Read/Write permissions to GitHub Actions to generate automatic releases for us.
+
+Head to your repository's page on GitHub, go to **Settings**, then find **Actions** and click on **General**. At the bottom, you will encounter the permission section that looks something like this:
+
+![GitHub Actions Permissions](img/workflow-permissions.png)
+
+Tick "Read and write permissions" and save your new settings.
+
+Now you can commit, push, and merge your changes into master and push your master to GitHub. Once GitHub Actions is complete if you look up your Releases you will see the new release there. Note that `seMethods.jar` has been added.
 
 ![1](img/release.png)
-
 
 > Publishing the build jar file as a release on GitHub is one way to provide an automated release. Ideally we would deploy our code to a cloud environment such as Google Cloud or Microsoft Azure. This is something that was originally included on the module but has been removed due to potential financial costs to students. If you are interested there are plenty of GitHub Actions resources available to do this.  For example https://github.com/google-github-actions/deploy-cloud-functions
 >
