@@ -442,7 +442,7 @@ And that is Spring setup.  Now we will test the setup.
 
 ### Testing RESTful Service
 
-**Create a new package called `hello`**.  We need three files - `Greeting.java`:
+**Create a new package called `hello` inside `src/java/main`**.  We need three files - `Greeting.java`:
 
 ```java
 package hello;
@@ -511,6 +511,10 @@ public class Application
     }
 }
 ```
+
+Before you run the application, add a new Run configuration for it. In IntelliJ, go to **Run** -> **Edit Configurations...**. Click the + symbol at the top left corner and select "Spring Boot". Set the SDK to Java 11 and add "hello.Application" as the main file. The final window should look something like this:
+
+![Spring Run Configuration](img/spring-boot-run-config.png)
 
 **Run the Application** and then go to the following URL: http://localhost:8080/greeting.  You will be returned the following JSON code:
 
