@@ -15,7 +15,7 @@ We have already seen how to generate a release on GitHub manually. GitHub action
 We are going to modify our existing *build* stage in our GitHub Actions script so it pushes the built JAR file to GitHub Releases.  We could add this as a separate stage but as the build stage already creates a jar file we will append our deployment action at the end of the stage.
 
 ```yml
-      build:
+build:
     name: Build Run in Docker and Deploy Release
     runs-on: ubuntu-20.04
     steps:
@@ -79,7 +79,7 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos 
+          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos 
           directory: ./target/site/jacoco
           flags: Unit Tests # optional
           verbose: true # optional (default = false)
@@ -108,7 +108,7 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
           directory: ./target/site/jacoco
           flags: Integration Tests # optional
           verbose: true # optional (default = false)
@@ -138,6 +138,8 @@ jobs:
             ./target/*.jar
 
 ```
+
+> Note that GitHub Actions will only run when we push to the **master** branch. **Develop** was removed.
 
 I have also added to the Maven `pom.xml` so that only the jar with dependencies is built during the Maven Package stage.
 
