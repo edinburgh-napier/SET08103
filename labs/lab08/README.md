@@ -519,6 +519,8 @@ Going to http://localhost:8080/greeting?name=Kevin will return the following:
 
 **Stop the application** otherwise it will continue running in the background servicing the requests.
 
+This works fine on our own machine but we also need to specify the Java version for the app's container to run on. You will need to edit the `Dockerfile` in the root folder of your project. Replace the first line `FROM openjdk:latest` with `FROM openjdk:11`.
+
 ### Converting the HR System to a RESTful App
 
 Now that we have Spring setup we can convert our existing HR System to be restful.  This is quite an involved process, requiring you to update much across our existing code.
@@ -659,6 +661,13 @@ This configuration tells Nginx the following:
 - Our main website files will be in the folder `/usr/share/nginx/html`.  Note this is the same folder we will copy to in the Dockerfile.
 - Nginx will listen on port 80 (the standard HTTP port).
 - Any request coming into `/app/` (e.g., http://www.napier.ac.uk/app) will be forwarded to the address `http://app:8080`.  
+
+For convenience, we can tell docker-compose to build this container with the rest of our components. Add the following code to the `docker-compose.yml` file:
+
+```yml
+  web:
+    build: web/.
+```
 
 Now add a new directory called `content` to the `web` directory, and add the following `index.html` file to it:
 
