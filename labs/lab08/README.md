@@ -153,12 +153,12 @@ The complete Maven file is shown below for reference.
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.napier.sem</groupId>
-    <artifactId>sem_employees</artifactId>
+    <artifactId>seMethods</artifactId>
     <version>0.1.0.3</version>
 
     <properties>
-        <maven.compiler.source>10</maven.compiler.source>
-        <maven.compiler.target>10</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -243,6 +243,8 @@ The complete Maven file is shown below for reference.
     </build>
 </project>
 ```
+
+> Note that for this to work, we need to have JDK 11 downloaded. To download this JDK in IntelliJ, go to **File** -> **Project Structure** -> **Project** -> **SDK**. Open the dropdown menu and click "Download JDK...", then select 11 for **Version** and any of the options for **Vendor**. Then, wait until the download is finished before running **Maven Package**.
 
 Before we merge our changes into master, we need to grant Read/Write permissions to GitHub Actions to generate automatic releases for us.
 
