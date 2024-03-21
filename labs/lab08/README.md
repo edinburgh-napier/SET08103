@@ -15,7 +15,7 @@ We have already seen how to generate a release on GitHub manually. GitHub action
 We are going to modify our existing *build* stage in our GitHub Actions script so it pushes the built JAR file to GitHub Releases.  We could add this as a separate stage but as the build stage already creates a jar file we will append our deployment action at the end of the stage.
 
 ```yml
-      build:
+build:
     name: Build Run in Docker and Deploy Release
     runs-on: ubuntu-20.04
     steps:
@@ -79,7 +79,7 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos 
+          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos 
           directory: ./target/site/jacoco
           flags: Unit Tests # optional
           verbose: true # optional (default = false)
@@ -108,7 +108,7 @@ jobs:
       - name: CodeCov
         uses: codecov/codecov-action@v2
         with:
-          # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos
           directory: ./target/site/jacoco
           flags: Integration Tests # optional
           verbose: true # optional (default = false)
@@ -139,6 +139,8 @@ jobs:
 
 ```
 
+> Note that GitHub Actions will only run when we push to the **master** branch. **Develop** was removed.
+
 I have also added to the Maven `pom.xml` so that only the jar with dependencies is built during the Maven Package stage.
 
 The complete Maven file is shown below for reference.
@@ -151,12 +153,12 @@ The complete Maven file is shown below for reference.
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.napier.sem</groupId>
-    <artifactId>sem_employees</artifactId>
+    <artifactId>seMethods</artifactId>
     <version>0.1.0.3</version>
 
     <properties>
-        <maven.compiler.source>10</maven.compiler.source>
-        <maven.compiler.target>10</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -175,17 +177,6 @@ The complete Maven file is shown below for reference.
 
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>default-jar</id>
-                        <!-- skip building the default-jar-->
-                        <phase>none</phase>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -253,10 +244,19 @@ The complete Maven file is shown below for reference.
 </project>
 ```
 
-Once happy with your changes merge them into master and push your changes to GitHub. Once GitHub Actions is complete if you look up your Releases you will see the new release there.  Note that `seMethods.jar` has been added.
+> Note that for this to work, we need to have JDK 11 downloaded. To download this JDK in IntelliJ, go to **File** -> **Project Structure** -> **Project** -> **SDK**. Open the dropdown menu and click "Download JDK...", then select 11 for **Version** and any of the options for **Vendor**. Then, wait until the download is finished before running **Maven Package**.
+
+Before we merge our changes into master, we need to grant Read/Write permissions to GitHub Actions to generate automatic releases for us.
+
+Head to your repository's page on GitHub, go to **Settings**, then find **Actions** and click on **General**. At the bottom, you will encounter the permission section that looks something like this:
+
+![GitHub Actions Permissions](img/workflow-permissions.png)
+
+Tick "Read and write permissions" and save your new settings.
+
+Now you can commit, push, and merge your changes into master and push your master to GitHub. Once GitHub Actions is complete if you look up your Releases you will see the new release there. Note that `seMethods.jar` has been added.
 
 ![1](img/release.png)
-
 
 > Publishing the build jar file as a release on GitHub is one way to provide an automated release. Ideally we would deploy our code to a cloud environment such as Google Cloud or Microsoft Azure. This is something that was originally included on the module but has been removed due to potential financial costs to students. If you are interested there are plenty of GitHub Actions resources available to do this.  For example https://github.com/google-github-actions/deploy-cloud-functions
 >
@@ -433,7 +433,7 @@ And that is Spring setup.  Now we will test the setup.
 
 ### Testing RESTful Service
 
-**Create a new package called `hello`**.  We need three files - `Greeting.java`:
+**Create a new package called `hello` inside `src/java/main`**.  We need three files - `Greeting.java`:
 
 ```java
 package hello;
@@ -503,6 +503,10 @@ public class Application
 }
 ```
 
+Before you run the application, add a new Run configuration for it. In IntelliJ, go to **Run** -> **Edit Configurations...**. Click the + symbol at the top left corner and select "Spring Boot". Set the SDK to Java 11 and add "hello.Application" as the main file. The final window should look something like this:
+
+![Spring Run Configuration](img/spring-boot-run-config.png)
+
 **Run the Application** and then go to the following URL: http://localhost:8080/greeting.  You will be returned the following JSON code:
 
 ```json
@@ -517,6 +521,8 @@ Going to http://localhost:8080/greeting?name=Kevin will return the following:
 
 **Stop the application** otherwise it will continue running in the background servicing the requests.
 
+This works fine on our own machine but we also need to specify the Java version for the app's container to run on. You will need to edit the `Dockerfile` in the root folder of your project. Replace the first line `FROM openjdk:latest` with `FROM openjdk:11`.
+
 ### Converting the HR System to a RESTful App
 
 Now that we have Spring setup we can convert our existing HR System to be restful.  This is quite an involved process, requiring you to update much across our existing code.
@@ -525,20 +531,19 @@ It might be useful to start up a database container to connect to now.  This is 
 
 #### Updating `App`
 
-First, we need to modify the declaration of `App` to include the necessary imports and to state that the application is a Spring one.  Modify the start of `App.java` to the following:
+First, we need to modify the declaration of `App` to include the necessary imports and to state that the application is a Spring one. Add the followind imports at  the start of `App.java`:
 
 ```java
-package com.napier.sem;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+```
 
-import java.sql.*;
-import java.util.ArrayList;
+Add the following annotations above `public class App`:
 
+```java
 @SpringBootApplication
 @RestController
 public class App
@@ -572,16 +577,14 @@ We also have to change the declarations managing our connection to be `static`:
 These need to be `static` as we will no longer create an `App` object.  Next we update `main` to initialise the Spring application:
 
 ```java
-    public static void main(String[] args)
-    {
-        // Connect to database
-        if (args.length < 1)
-        {
-            connect("localhost:33060");
-        }
-        else
-        {
-            connect(args[0]);
+    public static void main(String[] args) {
+        // Create new Application and connect to database
+        App app = new App();
+
+        if (args.length < 1) {
+            connect("localhost:33060", 0);
+        } else {
+            connect(args[0], Integer.parseInt(args[1]));
         }
 
         SpringApplication.run(App.class, args);
@@ -660,6 +663,13 @@ This configuration tells Nginx the following:
 - Our main website files will be in the folder `/usr/share/nginx/html`.  Note this is the same folder we will copy to in the Dockerfile.
 - Nginx will listen on port 80 (the standard HTTP port).
 - Any request coming into `/app/` (e.g., http://www.napier.ac.uk/app) will be forwarded to the address `http://app:8080`.  
+
+For convenience, we can tell docker-compose to build this container with the rest of our components. Add the following code to the `docker-compose.yml` file:
+
+```yml
+  web:
+    build: web/.
+```
 
 Now add a new directory called `content` to the `web` directory, and add the following `index.html` file to it:
 
