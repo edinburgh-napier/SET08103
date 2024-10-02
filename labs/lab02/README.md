@@ -203,11 +203,13 @@ And now we have our project automatically building on pushes to GitHub, and the 
 
 You can add various badges to your project.  [Shields.io](https://shields.io/) is one such site that provides badges.  We are going to add two to our `README.md`: one for our license and one for our release.  The license badge takes the URL:
 
-`[![LICENSE](https://img.shields.io/github/license/<github-username>/sem.svg?style=flat-square)](https://github.com/<github-username>/sem/blob/master/LICENSE)`
+`[![LICENSE](https://img.shields.io/github/license/<github-username>/<repository>.svg?style=flat-square)](https://github.com/<github-username>/<repository>/blob/master/LICENSE)`
 
-Just replace `<github-username>` with your GitHub username.  The release badge is:
+Just replace `<github-username>` with your GitHub username.
+Replace `<repository>` with your repository name.
+The release badge is:
 
-`[![Releases](https://img.shields.io/github/release/<github-username>/sem/all.svg?style=flat-square)](https://github.com/<github-username>/sem/releases)`
+`[![Releases](https://img.shields.io/github/release/<github-username>/<repository>/all.svg?style=flat-square)](https://github.com/<github-username>/<repository>/releases)`
 
 And then update your GitHub repository:
 
