@@ -153,8 +153,8 @@ Each group will undertake **four** graded code reviews:
 Note that Teaching starts in Week 2. Week Commencing 16th of February
 
 1. Week 5 (commencing 07/10/2024) Code Review 1 (10% of CW mark).
-2. Week 8 (commencing 04/11/2024) Code Review 2 (30% of CW mark).
-3. Week 10 (commencing 11/11/2024) Code Review 3 (30% of CW mark). 
+2. Week 9 (commencing 04/11/2024) Code Review 2 (30% of CW mark).
+3. Week 11 (commencing 18/11/2024) Code Review 3 (30% of CW mark). 
 4. Week 13 (commencing 02/12/2024) Code Review 4 (30% of CW mark).
 
 The code reviews will take place during your usual Lab sessions.  Each group will be given **10 minutes maximum** for the code review.  Your group will be **allocated a time for the code review**.  The details of the individual review points are below.  These meetings **must be attended** at the **stated time**.  Guidelines for grading the group:
@@ -223,20 +223,20 @@ The following criteria will be assessed for overall quality:
 
 The aim of this code review is to check that testing has been correctly specified.  At this stage, at least 66% of the work of the project should be completed.
 
-#### Checklist Submission 3 (16% of CW mark)
+#### Checklist Submission 3 (14% of CW mark)
 
 The following must be in place:
 
 -  Suitable integration tests defined.
 -  Tests running on GitHub Actions.
 
-#### Graded Criteria Submission 3 (14% of CW mark)
+#### Graded Criteria Submission 3 (16% of CW mark)
 
 The following criteria will be assessed for overall quality:
 
 - Metrics from GitHub.  Also used to assess individual contribution.
 - Code quality including comments.
-- Correct usage of branches.
+- Correct usage of branches (following workflow and only change, add and remove files in `feature` branches).
 - Continuous integration working.
 - Kanban/Project Board being used.
 - Quality and coverage of unit-tests.
@@ -259,7 +259,7 @@ The following criteria will be assessed for overall quality:
 
 - Metrics from GitHub.  Also used to assess individual contribution.
 - Code quality including comments.
-- Correct usage of branches.
+- Correct usage of branches (following workflow and only change, add and remove files in `feature` or `bugfix` branches).
 - Continuous integration working.
 - Kanban/Project Board being used.
 - Quality and coverage of unit tests.
