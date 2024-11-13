@@ -1,23 +1,31 @@
 # Coursework Assessment Details
 
-## Coursework Proforma
+## SET08103 Software Engineering Methods
+|||
+|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Learning Outcome's Covered: | 1,3,4                                                                                                                                                           |
+| Assessment Type:            | Practical Assessment / Demonstration                                                                                                                            |
+| Overall Module Assessment:  | 60% coursework, 40% class test                                                                                                                                  |
+| For this assessment:        | 60%                                                                                                                                                             |
+| Deadline of submission      | Your attention is drawn to the penalties for late submissions.  See details below.                                                                              |
+| Arrangements for submission | Coursework to be submitted via Moodle and GitHub.                                                                                                               |
+| Module leader               | Andreas Steyven                                                                                                                                                 |
+| Tutor with responsibility   | Andreas Steyven                                                                                                                                                 |
+| Return of work and feedback | Face-to-face via code reviews and via Moodle.                                                                                                                   |
+| Notes                       | - You are advised to keep a copy of your submitted assessment. <br/> - Please read and follow the [‘Fit-to-Sit’](https://my.napier.ac.uk/your-studies/academic-issues/extenuating-circumstances) guidance if you need to request an extension |
 
-| | |
-| --- | --- |
-| Module number | SET08103 |
-| Module title | Software Engineering Methods |
-| Module leader | Andreas Steyven |
-| Tutor with responsibility for this Assessment. Student's first point of contact. | As above. |
-| Assessment | Project |
-| Weighting | 60% of module assessment |
-| Size and/or time limits for assessment | See description below. |
-| Deadline of submission | Your attention is drawn to the penalties for late submissions.  See details below. |
-| Arrangements for submission | Coursework to be submitted via Moodle and GitHub. |
-| Assessment Regulations | All assessments are subject to the University Regulations |
-| The requirements for the assessment | See below. |
-| Special instructions | N/A |
-| Return of work and feedback | Face-to-face via code reviews and via Moodle. |
-| Assessment criteria | See below. |
+### Assessment regulations and academic integrity
+
+- The University rules on Academic Integrity apply to all submissions. The student academic integrity regulations which can be accessed via the [Academic integrity](https://my.napier.ac.uk/your-studies/improve-your-academic-and-study-skills/referencing-and-academic-integrity/academic-integrity) pages contain a detailed definition of academic integrity breaches.
+- You cannot knowingly permit another student to copy all or part of your work.
+- You must not share your work with other student groups.
+- Asking coursework-related questions in external online forums (such as Stackoverflow) is NOT permitted.
+
+By submitting for each of the code review, you are confirming that:
+
+- It is your own work except where explicit reference is made to the contribution of others.
+- It has not been submitted for any module, programme or degree at Edinburgh Napier University or any other institution.
+- If you have made use of generative Artificial Intelligence (AI) tools, you have done so only as allowed for this assessment, and have provided the relevant details in the coursework declaration.
 
 ## Coursework Specification
 
