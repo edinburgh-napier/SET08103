@@ -397,7 +397,7 @@ We need Maven to generate reports for us.  There are different plugins that can 
 <plugin>
     <groupId>org.jacoco</groupId>
     <artifactId>jacoco-maven-plugin</artifactId>
-    <version>0.8.2</version>
+    <version>0.8.12</version>
     <executions>
         <execution>
             <goals>
