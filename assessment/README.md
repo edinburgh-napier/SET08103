@@ -29,9 +29,11 @@ By submitting for each of the code review, you are confirming that:
 
 ## Coursework Specification
 
-You will work on the project as a Scrum team.  Details on Scrum are provided in [Unit 01 (b)](../units/unit01/unit01b.md), including an FAQ on how to apply Scrum in the module.
+You will work on the project as a Scrum team of four.  
+Details on Scrum are provided in [Unit 01 (b)](../units/unit01/unit01b.md), including an FAQ on how to apply Scrum in the module.
 
-You work for an organisation that requires reporting on population information.  You have been tasked with designing and implementing a new system to allow easy access to this population information.  The organisation has provided you with an SQL database to work from available [here](https://downloads.mysql.com/docs/world-db.zip).
+You work for an organisation that requires reporting on population information. 
+You have been tasked with designing and implementing a new system to allow easy access to this population information.  The organisation has provided you with an SQL database to work from available [here](https://downloads.mysql.com/docs/world-db.zip).
 
 The organisation has asked for the following reports to be generated:
 

@@ -1,4 +1,4 @@
-# Unit 9a: The Third Way of DevOps - Continuous Learning and Experimentation
+# Unit 9b: The Third Way of DevOps - Continuous Learning and Experimentation
 
 ## Behavioural Objectives
 
